@@ -53,6 +53,8 @@ body {
 	grid-area: img;
 	position: relative;
 	text-align: center;
+	display: flex;
+	justify-content: center;
 }
 
 .avatar {
@@ -61,23 +63,25 @@ body {
 	margin-top: 30px;
 }
 
-.img-avatar::before {
-	content: '';
-	display: block;
-	background-image: url(images/pattern-bg.svg);
-	background-repeat: no-repeat;
+.pattern {
 	position: absolute;
-	background-size: contain;
-	height: 100%;
-	width: 100%;
+	z-index: -1;
+	top: 0;
+}
+
+.bg {
+	height: 306px;
+	width: 360px;
 	z-index: -1;
 }
 
 .change {
 	position: absolute;
 	bottom: 1rem;
-	margin: 0 auto;
-	width: 100%;
+}
+
+.change span {
+	display: inline-block;
 }
 
 .prev,
@@ -107,17 +111,19 @@ body {
 .sentence {
 	font-weight: 300;
 	margin-bottom: 25px;
+	display: flex;
+	justify-content: center;
 }
 
 .sentence::before {
 	content: '';
 	display: block;
 	background-image: url(images/pattern-quotes.svg);
+	background-repeat: no-repeat;
 	position: absolute;
-	background-size: contain;
 	height: 50px;
 	width: 60px;
-	transform: translate(250%, -50%);
+	transform: translateY(-50%);
 }
 
 .name {
@@ -131,13 +137,23 @@ body {
 	font-weight: 500;
 }
 
-@media (min-width: 900px) {
+@media only screen and (max-width: 900px) {
+	.presentation {
+		padding: 20px;
+		margin: 1rem 0 3.5rem;
+	}
+
+	.sentence::before {
+		background-size: contain;
+		height: 50px;
+		width: 60px;
+		transform: translateY(-50%);
+	}
+}
+
+@media only screen and (min-width: 900px) {
 	.container {
-		position: relative;
 		height: 100vh;
-		display: flex;
-		justify-content: center;
-		align-items: center;
 	}
 
 	.curve {
@@ -151,22 +167,26 @@ body {
 		position: relative;
 		align-items: center;
 		grid-gap: 0;
-		margin: 1rem 0 3.5rem;
-		width: 80%;
 	}
 
-	.img-avatar {
-		width: 500px;
-		height: 500px;
+	.pattern {
+		transform: translateY(0%);
+	}
+
+	.bg {
+		height: 465px;
+		width: 430px;
 	}
 
 	.sentence::before {
-		transform: translate(155%, -40%);
+		height: 105px;
+		width: 125px;
+		transform: translate(-115%, -65%);
 	}
 
 	.avatar {
-		height: 390px;
-		width: 370px;
+		height: 400px;
+		width: 375px;
 		margin-top: 45px;
 		box-shadow: 0px 20px 15px rgba(0, 0, 0, 0.2);
 	}
@@ -174,17 +194,18 @@ body {
 	.user {
 		text-align: left;
 		position: absolute;
-		width: 650px;
+		width: 550px;
 		z-index: 2;
 	}
 
 	.sentence {
-		font-size: 1.6em;
+		font-size: 1.4em;
+		margin-top: 100px;
 	}
 
 	.change {
-		width: 60%;
-		bottom: 2rem;
+		left: 25px;
+		bottom: -2rem;
 	}
 
 	.next,
@@ -202,7 +223,7 @@ body {
 }
 
 .attribution {
-	font-size: 11px;
+	font-size: .5em;
 	text-align: center;
 }
 

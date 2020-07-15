@@ -30,7 +30,6 @@ const next = document.getElementById('next');
 function showPerson(num){
 	const person = team[num];
 	img.src = person.img;
-	console.log(img.src);
 	name.textContent = person.name;
 	position.textContent = person.position;
 	sentence.textContent = person.sentence;
@@ -39,14 +38,14 @@ function showPerson(num){
 prev.addEventListener('click', () => {
 	Item--;
 	if (Item < 0) {
-		Item = team.length;
+		Item = team.length - 1;
 	}
 	showPerson(Item);
 });
 
 next.addEventListener('click', () => {
 	Item++;
-	if (Item > team.length) {
+	if (Item >= team.length) {
 		Item = 0;
 	}
 	showPerson(Item);
